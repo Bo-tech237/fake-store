@@ -1,8 +1,6 @@
 import fs from 'fs';
 import { NextResponse } from 'next/server';
 
-//export const config = { api: { bodyParser: false } };
-
 export async function POST(request) {
     const formData = await request.formData();
     console.log('test', formData);
