@@ -2,26 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+h1 {
+    @apply text-blue-900 mb-2 text-xl;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+input,
+textarea,
+select {
+    @apply border-2 border-gray-300 py-1 rounded-md px-1 w-full;
+    @apply mb-2;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+input:focus,
+textarea:focus,
+select:focus {
+    @apply border-blue-900;
+}
+
+label {
+    @apply text-blue-900;
+}
+
+.btn-primary {
+    @apply bg-blue-900 text-white mb-2 py-1 px-4 rounded-md;
+}
+
+.btn-red {
+    @apply bg-red-800 text-white mb-2 py-1 px-4 rounded-md;
+}
+
+.btn-default {
+    @apply bg-slate-700 text-white mb-2 py-1 px-4 rounded-md;
+}
+
+.btn {
+    @apply bg-slate-700 text-white py-1 px-4 rounded-md;
+}
+
+table.back {
+    @apply w-full mt-10 border-collapse border-2 border-gray-500;
+}
+
+table.back th {
+    @apply border border-gray-400 px-4 py-2 text-gray-800;
+}
+
+table.back tr td {
+    @apply border border-gray-400 px-4 py-2;
+}
+
+table.basic {
+    @apply w-full;
+}
+
+table.basic th {
+    @apply px-1 py-2 text-gray-800;
+}
+
+table.basic tr td {
+    @apply px-1 border-t py-2 border-gray-400;
+}
+
+.grid-cart1 {
+    @apply my-0 mx-auto w-[90%] py-40 md:w-[50%];
+}
+
+.grid-cart2 {
+    @apply grid my-0 md:grid-cols-[1.2fr,0.8fr] py-4 gap-10 grid-cols-1 md:gap-10 mx-2;
+}
+.max-container {
+    @apply w-full max-w-5xl my-0 mx-auto;
+}
+
+.padding-1 {
+    @apply lg:px-0;
+}
+
+.button {
+    @apply bg-transparent text-4xl border-none outline-none cursor-pointer;
+}
+
+.on {
+    @apply text-orange-500;
+}
+
+.off {
+    @apply text-gray-200;
 }
