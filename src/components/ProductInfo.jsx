@@ -17,7 +17,7 @@ export default function ProductInfo({ product }) {
     }
 
     return (
-        <div className="bg-gray-400 min-h-screen">
+        <div className="bg-gray-400 min-h-screen mt-14">
             <div className="max-container">
                 <div className="pt-10">
                     <div className="grid grid-cols-[0.8fr,1.2fr] max-sm:grid-cols-1 max-lg:px-4 gap-10 ">
