@@ -47,7 +47,7 @@ export async function POST(request) {
                     ],
                     Subject: 'Reset Password request',
                     HTMLPart: `<h2>Hello ${user?.username}, someone (hopefully you) requested a password reset for this account. If you did want to reset your password, please click here: 
-                    <a href="http://localhost:3000/account/password-reset/${accessToken}">Reset Password</a>
+                    <a href="http://${process.env.DOMAIN}/account/password-reset/${accessToken}">Reset Password</a>
                     <br/>
                     For security reasons, this link is only valid for four hours.<br/>
                         
