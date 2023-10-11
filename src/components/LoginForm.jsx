@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -97,7 +96,7 @@ export default function LoginForm() {
                         className="text-sm mt-3 text-right"
                         href={'/user-auth/register'}
                     >
-                        Don't have an account?{' '}
+                        Don&apos;t have an account?{' '}
                         <span className="underline text-blue-900">
                             Register
                         </span>
