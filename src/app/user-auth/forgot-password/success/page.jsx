@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Success() {
     return (
-        <div className="grid place-items-center h-screen">
+        <div className="grid place-items-center bg-gray-300 h-screen">
             <div className="shadow-lg p-5 mx-2 rounded-lg border-t-4 border-blue-600">
                 <h2 className="text-xl font-bold my-4">Password Reset</h2>
                 <h3 className="text-xl font-bold my-4">
