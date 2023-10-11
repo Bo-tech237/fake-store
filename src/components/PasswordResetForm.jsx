@@ -40,8 +40,8 @@ export default function PasswordResetForm({ token }) {
     }
 
     return (
-        <div className="grid place-items-center h-screen">
-            <div className="shadow-lg p-5 rounded-lg border-t-4 border-blue-600">
+        <div className="grid place-items-center bg-gray-300 h-screen">
+            <div className="shadow-lg p-5 mx-2 rounded-lg border-t-4 border-blue-600">
                 <h2 className="text-xl font-bold my-4">
                     Choose a new password.
                 </h2>
@@ -64,7 +64,10 @@ export default function PasswordResetForm({ token }) {
                         placeholder="Confirm Password..."
                         required
                     />
-                    <button className="bg-blue-900 text-white font-bold cursor-pointer px-6 py-2">
+                    <button
+                        type="submit"
+                        className="bg-blue-900 text-white font-bold cursor-pointer px-6 py-2"
+                    >
                         Reset Password
                     </button>
                     {error && (
