@@ -23,7 +23,7 @@ export default function Nav({ mobileMenuOpen, setMobileMenuOpen }) {
 
     return (
         <aside
-            className={`text-white ${h
+            className={`text-white ${
                 mobileMenuOpen ? 'left-0' : '-left-full'
             } p-4 pr-0 fixed w-full bg-blue-900 h-full md:static md:w-auto`}
         >
