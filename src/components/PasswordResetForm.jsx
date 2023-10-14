@@ -16,24 +16,23 @@ export default function PasswordResetForm({ token }) {
 
         setError('');
 
-        if (password !== confirmPassword) {
-            setError('Confirm Password does not match.');
-            return;
-        }
-
-        const response = await axiosInstance.post(
-            '/api/reset-password/' + token,
-            {
-                password,
-                confirmPassword,
-            }
-        );
-
-        if (response?.status === 200) {
-            router.push('/user-auth/login');
-        }
-
         try {
+            if (password !== confirmPassword) {
+                setError('Confirm Password does not match.');
+                return;
+            }
+
+            const response = await axiosInstance.post(
+                '/api/reset-password/' + token,
+                {
+                    password,
+                    confirmPassword,
+                }
+            );
+
+            if (response?.status === 200) {
+                router.push('/user-auth/login');
+            }
         } catch (error) {
             console.log('error', error);
         }
