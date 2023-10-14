@@ -23,17 +23,18 @@ export default function RegisterForm() {
             });
 
             const data = await response?.data;
-            console.log('res', data);
 
             if (response?.status === 201) {
                 setUsername('');
                 setEmail('');
                 setPassword('');
                 router.push('/user-auth/login');
-            } else if (response?.status === 400 || response?.status === 409) {
-                setError(data);
             }
         } catch (error) {
+            if (error.response.data === 400 || 409) {
+                setError(error.response.data);
+            }
+
             console.log('Error:', error);
         }
     }
