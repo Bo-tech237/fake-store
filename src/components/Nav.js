@@ -10,22 +10,26 @@ import {
     faRectangleList,
     faList,
 } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
 
 export default function Nav({ mobileMenuOpen, setMobileMenuOpen }) {
     const inactiveLink = 'flex items-center gap-2 p-1';
     const activeLink = inactiveLink + ' bg-white text-blue-900 rounded-l-lg ';
     const pathname = usePathname();
 
+    useEffect(() => {
+        setMobileMenuOpen(false);
+    }, [pathname, setMobileMenuOpen]);
+
     return (
         <aside
-            className={`text-white ${
+            className={`text-white ${h
                 mobileMenuOpen ? 'left-0' : '-left-full'
             } p-4 pr-0 fixed w-full bg-blue-900 h-full md:static md:w-auto`}
         >
             <div className="">
                 <Link
                     href={'/dashboard'}
-                    onClick={() => setMobileMenuOpen(false)}
                     className="flex gap-2 mb-4 pr-4 items-center"
                 >
                     <FontAwesomeIcon
@@ -40,7 +44,6 @@ export default function Nav({ mobileMenuOpen, setMobileMenuOpen }) {
                 <nav className="flex flex-col gap-2">
                     <Link
                         href={'/dashboard'}
-                        onClick={() => setMobileMenuOpen(false)}
                         className={
                             pathname === '/dashboard'
                                 ? activeLink
@@ -52,7 +55,6 @@ export default function Nav({ mobileMenuOpen, setMobileMenuOpen }) {
                     </Link>
                     <Link
                         href={'/dashboard/products'}
-                        onClick={() => setMobileMenuOpen(false)}
                         className={
                             pathname.includes('/dashboard/products')
                                 ? activeLink
@@ -67,7 +69,6 @@ export default function Nav({ mobileMenuOpen, setMobileMenuOpen }) {
                     </Link>
                     <Link
                         href={'/dashboard/categories'}
-                        onClick={() => setMobileMenuOpen(false)}
                         className={
                             pathname.includes('/dashboard/categories')
                                 ? activeLink
@@ -79,7 +80,6 @@ export default function Nav({ mobileMenuOpen, setMobileMenuOpen }) {
                     </Link>
                     <Link
                         href={'/dashboard/orders'}
-                        onClick={() => setMobileMenuOpen(false)}
                         className={
                             pathname.includes('/dashboard/orders')
                                 ? activeLink
@@ -91,7 +91,6 @@ export default function Nav({ mobileMenuOpen, setMobileMenuOpen }) {
                     </Link>
                     <Link
                         href={'/dashboard/settings'}
-                        onClick={() => setMobileMenuOpen(false)}
                         className={
                             pathname.includes('/dashboard/settings')
                                 ? activeLink
