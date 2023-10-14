@@ -15,12 +15,10 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-    const session = await getServerSession(authOptions);
-
     return (
         <html lang="en">
             <body className={inter.className} suppressHydrationWarning={true}>
-                <AuthProvider session={session}>{children}</AuthProvider>
+                <AuthProvider>{children}</AuthProvider>
             </body>
         </html>
     );
