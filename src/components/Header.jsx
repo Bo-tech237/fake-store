@@ -14,6 +14,10 @@ export default function Header() {
         useCartStore.persist.rehydrate();
     }, []);
 
+    useEffect(() => {
+        setMobileMenuOpen(false);
+    }, [currentRoute, setMobileMenuOpen]);
+
     return (
         <header className="bg-black  fixed w-full z-20 top-0 left-0 ">
             <nav className="max-container">
