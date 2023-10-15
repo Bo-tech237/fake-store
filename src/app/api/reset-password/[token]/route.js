@@ -3,24 +3,6 @@ import { User } from '@/models/User';
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
 
-export async function GET() {
-    await dbConnect();
-
-    const users = await User.find().exec();
-
-    try {
-        if (!users?.length) {
-            return NextResponse.json('No user found', {
-                status: 400,
-            });
-        }
-
-        return NextResponse.json({ users });
-    } catch (error) {
-        return NextResponse.json(error.message, { status: 500 });
-    }
-}
-
 export async function POST(request, { params: { token } }) {
     const { password, confirmPassword } = await request.json();
     await dbConnect();

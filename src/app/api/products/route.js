@@ -73,7 +73,7 @@ export async function PUT(request) {
     await dbConnect();
 
     try {
-        if ((!id, !title || !description || !price || !images.length)) {
+        if (!id || !title || !description || !price || !images.length) {
             return NextResponse.json('All fields are required', {
                 status: 400,
             });
