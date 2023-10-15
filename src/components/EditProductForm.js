@@ -116,7 +116,6 @@ export default function ProductForm({ product, id }) {
     function handleProperties(propName, value) {
         setProductProperties((prev) => {
             const newProductProps = { ...prev };
-            console.log('props', newProductProps);
             newProductProps[propName] = value;
             return newProductProps;
         });
