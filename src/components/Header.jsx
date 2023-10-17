@@ -3,6 +3,8 @@ import Link from 'next/link';
 import useCartStore from '@/context/store';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
     const cart = useCartStore((state) => state?.cart);
@@ -98,6 +100,10 @@ export default function Header() {
                                 }`}
                             >
                                 Cart{' '}
+                                <FontAwesomeIcon
+                                    size="1x"
+                                    icon={faShoppingCart}
+                                />
                                 {cart?.length > 0 ? (
                                     <span className="text-red-500 font-extrabold">
                                         {`(${cart?.length})`}

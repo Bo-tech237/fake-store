@@ -39,7 +39,7 @@ export default function LoginForm() {
                 setPassword('');
             }
 
-            if (session?.user?.role === 'Admins') {
+            if (session?.user?.role === 'Admin') {
                 router.push('/dashboard');
             } else if (session?.user.role === 'User') {
                 router.push('/account');

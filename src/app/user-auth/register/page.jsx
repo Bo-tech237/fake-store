@@ -7,7 +7,7 @@ import Header from '@/components/Header';
 export default async function Register() {
     const session = await getServerSession(authOptions);
 
-    if (session?.user?.role === 'Admins') {
+    if (session?.user?.role === 'Admin') {
         redirect('/dashboard');
     } else if (session?.user?.role === 'User') {
         redirect('/account');
