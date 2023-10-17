@@ -25,9 +25,11 @@ export async function POST(request) {
 
         const user = await User.create(userObject);
         if (user) {
-            NextResponse.json(`New user ${username} created`, { status: 201 });
+            return NextResponse.json(`New user ${username} created`, {
+                status: 201,
+            });
         } else {
-            NextResponse.json('Invalid data received', { status: 400 });
+            return NextResponse.json('Invalid data received', { status: 400 });
         }
     } catch (error) {
         return NextResponse.json(error.message, { status: 500 });

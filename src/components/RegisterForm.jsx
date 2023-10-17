@@ -24,9 +24,9 @@ export default function RegisterForm() {
                 password,
             });
 
-            const data = await response?.data;
+            console.log('register', response.data);
 
-            if (response?.statusText === 'ok') {
+            if (response?.status === 201) {
                 setUsername('');
                 setEmail('');
                 setPassword('');
