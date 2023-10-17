@@ -9,6 +9,7 @@ export default function RegisterForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const router = useRouter();
 
@@ -16,6 +17,7 @@ export default function RegisterForm() {
         e.preventDefault();
 
         try {
+            setLoading(true);
             const response = await axiosInstance.post('/api/auth/register', {
                 username,
                 email,
@@ -24,7 +26,7 @@ export default function RegisterForm() {
 
             const data = await response?.data;
 
-            if (response?.status === 201) {
+            if (response?.statusText === 'ok') {
                 setUsername('');
                 setEmail('');
                 setPassword('');
@@ -36,6 +38,8 @@ export default function RegisterForm() {
             }
 
             console.log('Error:', error);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -67,8 +71,11 @@ export default function RegisterForm() {
                         placeholder="Password..."
                         required
                     />
-                    <button className="bg-blue-900 text-white font-bold cursor-pointer px-6 py-2">
-                        Register
+                    <button
+                        disabled={loading}
+                        className="bg-blue-900 text-white font-bold cursor-pointer px-6 py-2"
+                    >
+                        {loading ? 'Registering...' : 'Register'}
                     </button>
                     {error && (
                         <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
