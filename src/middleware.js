@@ -7,7 +7,7 @@ export default withAuth(
 
         if (
             request.nextUrl.pathname.startsWith('/dashboard') &&
-            request.nextauth.token?.role !== 'Admins'
+            request.nextauth.token?.role !== 'Admin'
         ) {
             return NextResponse.rewrite(
                 new URL('/user-auth/login', request.url)
