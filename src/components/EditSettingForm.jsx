@@ -15,7 +15,6 @@ export default function EditSettingForm({ user, id }) {
             id,
             username: user.username,
             email: user.email,
-            password: user.password,
             role,
         };
 
