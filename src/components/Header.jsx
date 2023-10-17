@@ -99,11 +99,10 @@ export default function Header() {
                                         : 'text-white'
                                 }`}
                             >
-                                Cart{' '}
                                 <FontAwesomeIcon
                                     size="1x"
                                     icon={faShoppingCart}
-                                />
+                                />{' '}
                                 {cart?.length > 0 ? (
                                     <span className="text-red-500 font-extrabold">
                                         {`(${cart?.length})`}
@@ -159,7 +158,7 @@ export default function Header() {
                                     : 'text-white'
                             }`}
                         >
-                            Cart{' '}
+                            <FontAwesomeIcon size="1x" icon={faShoppingCart} />{' '}
                             {cart?.length > 0 ? (
                                 <span className="text-red-500 font-extrabold">
                                     {`(${cart?.length})`}
