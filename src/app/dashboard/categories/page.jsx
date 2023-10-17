@@ -83,7 +83,7 @@ export default function Categories() {
             const response = await axios.delete(
                 '/api/categories/' + deletedCategory?._id
             );
-            console.log(response.data);
+
             if (response.status === 200) {
                 setDeleting(false);
                 setDialogOpen(false);
