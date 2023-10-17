@@ -99,11 +99,11 @@ export default function Header() {
                             >
                                 Cart{' '}
                                 {cart?.length > 0 ? (
-                                    <button className="text-red-900 font-extrabold bg-gray-300 rounded px-3">
-                                        {cart?.length}
-                                    </button>
+                                    <span className="text-red-500 font-extrabold">
+                                        {`(${cart?.length})`}
+                                    </span>
                                 ) : (
-                                    ''
+                                    `(0)`
                                 )}
                             </Link>
                         </section>
@@ -155,11 +155,11 @@ export default function Header() {
                         >
                             Cart{' '}
                             {cart?.length > 0 ? (
-                                <button className="text-red-900 font-extrabold bg-gray-300 rounded px-3">
-                                    {cart?.length}
-                                </button>
+                                <span className="text-red-500 font-extrabold">
+                                    {`(${cart?.length})`}
+                                </span>
                             ) : (
-                                ''
+                                `(0)`
                             )}
                         </Link>
                     </section>
