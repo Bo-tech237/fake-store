@@ -35,7 +35,7 @@ export default function EditSettingForm({ user, id }) {
 
     return (
         <div>
-            <p className="text-center py-4 mb-10 md:text-5xl">
+            <p className="text-center py-4 mb-10 text-2xl md:text-4xl">
                 Update <span className="text-blue-900">{user.username}</span>{' '}
                 Role
             </p>

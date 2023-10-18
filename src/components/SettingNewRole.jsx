@@ -88,20 +88,20 @@ export default function SettingNewRole() {
                             required
                         />
                     </div>
-                    <div className="mt-6">
+                    <div className="mt-7">
                         <button
                             type="submit"
                             className="btn-primary"
                             disabled={loading}
                         >
-                            {loading ? 'Searching...' : 'Search User'}
+                            {loading ? 'Searching...' : 'Search'}
                         </button>
                     </div>
                 </form>
             </div>
             <Modal open={dialogOpen}>
                 <div className="p-16 flex flex-col gap-3 border-2 border-gray-500 rounded">
-                    <p className="text-center flex gap-1">
+                    <p className="text-center flex-col flex md:flex-row md:flex gap-1">
                         Assign new role to
                         <span className="text-blue-900">{username}</span>
                     </p>
