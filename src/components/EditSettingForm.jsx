@@ -22,7 +22,10 @@ export default function EditSettingForm({ user, id }) {
             setUpdate(true);
             const response = await axiosInstance.put('/api/users', data);
 
-            if (response.status === 200) router.push('/dashboard/settings');
+            if (response.status === 200) {
+                router.push('/dashboard/settings');
+                router.refresh();
+            }
         } catch (error) {
             console.log('Error', error);
         } finally {
@@ -32,6 +35,10 @@ export default function EditSettingForm({ user, id }) {
 
     return (
         <div>
+            <p className="text-center py-4 mb-10 md:text-5xl">
+                Update <span className="text-blue-900">{user.username}</span>{' '}
+                Role
+            </p>
             <form
                 className="flex justify-center space-x-5"
                 onSubmit={handleSubmit}
@@ -46,7 +53,7 @@ export default function EditSettingForm({ user, id }) {
                         required
                     />
                 </div>
-                <div className="pt-2">
+                <div className="mt-6">
                     <button
                         type="submit"
                         className="btn-primary"
