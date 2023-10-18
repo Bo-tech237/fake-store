@@ -8,8 +8,6 @@ export default async function EditSettings({ params: { id } }) {
 
     const user = JSON.parse(JSON.stringify(response));
 
-    console.log('sets', user);
-
     const content = user && <EditSettingForm user={user} id={id} />;
 
     return content;
