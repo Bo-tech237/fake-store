@@ -16,7 +16,7 @@ export default function Account() {
                     </button>
                 )}
             </div>
-            User account
+            <p>Welcome {session?.user.username}</p>
         </section>
     );
 }
