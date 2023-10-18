@@ -43,7 +43,7 @@ export default function SettingNewRole() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        await dbConnect();
+
         try {
             setLoading(true);
             if (!email) return;
