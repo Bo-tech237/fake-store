@@ -1,7 +1,7 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from '@/components/Modal';
-import { User } from '@/models/User';
+import { axiosInstance } from '@/axios/axiosInstance';
 
 export default function SettingNewRole() {
     const [id, setId] = useState('');
@@ -10,17 +10,6 @@ export default function SettingNewRole() {
     const [role, setRole] = useState('');
     const [dialogOpen, setDialogOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        async function fetchUserByEmail() {
-            const user = await User.findOne({ email });
-            setUserName(user?.username);
-            setRole(user?.role);
-            setId(user?._id);
-        }
-
-        fetchUserByEmail();
-    }, [email]);
 
     function openDialog() {
         setDialogOpen((bool) => !bool);
@@ -40,7 +29,7 @@ export default function SettingNewRole() {
         try {
             setLoading(true);
 
-            const response = await axios.put('/api/users/', data);
+            const response = await axiosInstance.put('/api/users/', data);
 
             if (response.status === 201) {
                 setDialogOpen(false);
@@ -54,9 +43,21 @@ export default function SettingNewRole() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-
+        await dbConnect();
         try {
             setLoading(true);
+            if (!email) return;
+
+            const response = await axiosInstance.get('/api/users/');
+            const users = await response?.data;
+            const userArray = users.filter((user) => user.email === email);
+            const user = userArray[0];
+
+            if (!user) return;
+            setUserName(user?.username);
+            setRole(user?.role);
+            setId(user?._id);
+
             openDialog();
         } catch (error) {
             console.log('Error', error);
