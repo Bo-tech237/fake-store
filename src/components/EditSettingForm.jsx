@@ -39,30 +39,39 @@ export default function EditSettingForm({ user, id }) {
                 Update <span className="text-blue-900">{user.username}</span>{' '}
                 Role
             </p>
-            <form
-                className="flex justify-center space-x-5"
-                onSubmit={handleSubmit}
-            >
-                <div className="">
-                    <label>Role</label>
-                    <input
-                        type="text"
-                        placeholder="Role..."
-                        value={role}
-                        onChange={(e) => setRole(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="mt-6">
-                    <button
-                        type="submit"
-                        className="btn-primary"
-                        disabled={update}
-                    >
-                        {update ? 'Updating...' : 'Update'}
-                    </button>
-                </div>
-            </form>
+            <div className="flex justify-center">
+                <form
+                    className="flex flex-col justify-center gap-5"
+                    onSubmit={handleSubmit}
+                >
+                    <div className="">
+                        <label>Role</label>
+                        <input
+                            type="text"
+                            placeholder="Role..."
+                            value={role}
+                            onChange={(e) => setRole(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="flex justify-between">
+                        <button
+                            type="button"
+                            className="btn-default"
+                            onClick={() => router.push('/dashboard/settings')}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            className="btn-primary"
+                            disabled={update}
+                        >
+                            {update ? 'Updating...' : 'Update'}
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

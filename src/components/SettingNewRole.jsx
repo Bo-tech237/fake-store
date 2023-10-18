@@ -79,10 +79,10 @@ export default function SettingNewRole() {
                     onSubmit={handleSubmit}
                 >
                     <div className="">
-                        <label>Role</label>
+                        <label>User Email</label>
                         <input
                             type="email"
-                            placeholder="Email..."
+                            placeholder="User Email..."
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -116,7 +116,7 @@ export default function SettingNewRole() {
                         />
                     </div>
                     <div className="pt-2 flex justify-between">
-                        <button onClick={closeDialog} className="btn-primary">
+                        <button onClick={closeDialog} className="btn-default">
                             Cancel
                         </button>
                         <button
