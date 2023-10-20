@@ -33,15 +33,13 @@ export default function LoginForm() {
 
             console.log('loginSession', session);
 
-            if (session?.user) {
-                setLoading(false);
+            if (session?.user?.role === 'Admin') {
                 setEmail('');
                 setPassword('');
-            }
-
-            if (session?.user?.role === 'Admin') {
                 router.push('/dashboard');
             } else if (session?.user.role === 'User') {
+                setEmail('');
+                setPassword('');
                 router.push('/account');
             }
         } catch (error) {

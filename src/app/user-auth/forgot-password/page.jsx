@@ -7,29 +7,33 @@ import { axiosInstance } from '@/axios/axiosInstance';
 export default function ForgotPassword() {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const router = useRouter();
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const response = await axiosInstance.post('/api/send-email', {
-            email,
-        });
-
-        if (response?.error) {
-            setError('Invalid credentials');
-            return;
-        }
-
-        console.log('forgotPwd', response.error);
-
-        if (response?.status === 200) {
-            router.push('/user-auth/forgot-password/success');
-        }
 
         try {
+            setLoading(true);
+            const response = await axiosInstance.post('/api/send-email', {
+                email,
+            });
+
+            if (response?.error) {
+                setError('Invalid credentials');
+                return;
+            }
+
+            console.log('forgotPwd', response.error);
+
+            if (response?.status === 200) {
+                router.push('/user-auth/forgot-password/success');
+            }
         } catch (error) {
             console.log('error', error);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -50,8 +54,11 @@ export default function ForgotPassword() {
                         required
                     />
 
-                    <button className="bg-blue-900 text-white font-bold cursor-pointer px-6 py-2">
-                        Reset Password
+                    <button
+                        disabled={loading}
+                        className="bg-blue-900 text-white font-bold cursor-pointer px-6 py-2"
+                    >
+                        {loading ? 'Resetting...' : 'Reset Password'}
                     </button>
                     {error && (
                         <div className="bg-red-500 text-white w-fit text-center text-sm py-1 px-3 rounded-md mt-2">

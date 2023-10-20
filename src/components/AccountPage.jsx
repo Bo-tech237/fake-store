@@ -16,7 +16,13 @@ export default function AccountPage() {
                     </button>
                 )}
             </div>
-            <p>Welcome {session?.user.username}</p>
+            <p>
+                Welcome{' '}
+                <span className=" text-blue-900 font-extrabold">
+                    {session?.user.name}
+                </span>
+            </p>
+            <p>You have no order</p>
         </section>
     );
 }

@@ -6,6 +6,9 @@ export default function Success() {
             <div className="shadow-lg p-5 mx-2 bg-white rounded-lg border-t-4 border-blue-600">
                 <h2 className="text-xl font-bold my-4">Password Reset</h2>
                 <h3 className="text-xl font-bold my-4">
+                    An email has been sent to you.
+                </h3>
+                <h3 className="text-xl font-bold my-4">
                     If the email does not show up, check your spam folder.
                 </h3>
 
