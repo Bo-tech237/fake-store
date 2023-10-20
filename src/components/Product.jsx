@@ -13,7 +13,7 @@ export default function Product({ product }) {
         setIsAdded(true);
         setTimeout(() => {
             setIsAdded(false);
-        }, 2000);
+        }, 1000);
     }
 
     useEffect(() => {
