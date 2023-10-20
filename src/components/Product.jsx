@@ -1,11 +1,20 @@
 'use client';
 import Image from 'next/image';
 import useCartStore from '@/context/store';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 export default function Product({ product }) {
+    const [isAdded, setIsAdded] = useState(false);
     const addToCart = useCartStore((state) => state?.addToCart);
+
+    function handleAddToCart() {
+        addToCart(product);
+        setIsAdded(true);
+        setTimeout(() => {
+            setIsAdded(false);
+        }, 2000);
+    }
 
     useEffect(() => {
         useCartStore.persist.rehydrate();
@@ -28,10 +37,12 @@ export default function Product({ product }) {
                 <p className="text-lg font-bold">{product.price}$</p>
                 <div className="flex justify-center">
                     <button
-                        onClick={() => addToCart(product)}
-                        className="bg-blue-900 text-white text-xl w-[70%] py-1 px-2 rounded-lg border"
+                        onClick={() => handleAddToCart()}
+                        className={`bg-blue-900 text-white text-xl w-[70%] py-1 px-2 rounded-lg border ${
+                            isAdded && ' bg-green-700'
+                        }`}
                     >
-                        Add to cart
+                        {!isAdded ? 'Add to cart' : '✔added'}
                     </button>
                 </div>
             </div>
