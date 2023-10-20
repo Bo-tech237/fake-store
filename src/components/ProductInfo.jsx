@@ -6,7 +6,16 @@ import StarRating from './StarRating';
 
 export default function ProductInfo({ product }) {
     const [mainImage, setMainImage] = useState(product?.images[0]?.url);
+    const [isAdded, setIsAdded] = useState(false);
     const addToCart = useCartStore((state) => state?.addToCart);
+
+    function handleAddToCart() {
+        addToCart(product);
+        setIsAdded(true);
+        setTimeout(() => {
+            setIsAdded(false);
+        }, 2000);
+    }
 
     useEffect(() => {
         useCartStore.persist.rehydrate();
@@ -57,10 +66,13 @@ export default function ProductInfo({ product }) {
                                     {product?.price}$
                                 </p>
                                 <button
-                                    onClick={() => addToCart(product)}
-                                    className="bg-blue-900 text-white text-xl w-[70%] py-1 px-2 rounded-lg border"
+                                    onClick={() => handleAddToCart()}
+                                    disabled={isAdded}
+                                    className={`bg-blue-900 text-white text-xl w-[70%] py-1 px-2 rounded-lg border ${
+                                        isAdded && ' bg-green-700'
+                                    }`}
                                 >
-                                    Add to cart
+                                    {!isAdded ? 'Add to cart' : '✔added'}
                                 </button>
                             </div>
                         </div>
