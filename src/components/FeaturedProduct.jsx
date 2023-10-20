@@ -1,10 +1,19 @@
 'use client';
 import Image from 'next/image';
 import useCartStore from '@/context/store';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function FeaturedProduct({ product }) {
+    const [isAdded, setIsAdded] = useState(false);
     const addToCart = useCartStore((state) => state?.addToCart);
+
+    function handleAddToCart() {
+        addToCart(product);
+        setIsAdded(true);
+        setTimeout(() => {
+            setIsAdded(false);
+        }, 2000);
+    }
 
     useEffect(() => {
         useCartStore.persist.rehydrate();
@@ -21,10 +30,12 @@ export default function FeaturedProduct({ product }) {
                 </p>
                 <div className="">
                     <button
-                        onClick={() => addToCart(product)}
-                        className="bg-white mt-5 text-black text-xl py-1 px-2 rounded-lg border border-cyan-600"
+                        onClick={() => handleAddToCart()}
+                        className={`bg-white mt-5 text-black text-xl py-1 px-2 rounded-lg border border-cyan-600 ${
+                            isAdded && ' bg-green-700'
+                        }`}
                     >
-                        Add to cart
+                        {!isAdded ? 'Add to cart' : '✔added'}
                     </button>
                 </div>
             </div>
