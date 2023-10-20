@@ -24,7 +24,7 @@ export default function EditSettingForm({ user, id }) {
 
             if (response.status === 200) {
                 router.push('/dashboard/settings');
-                router.refresh();
+                router.refresh('/dashboard/settings');
             }
         } catch (error) {
             console.log('Error', error);
