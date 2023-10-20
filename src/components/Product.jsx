@@ -38,6 +38,7 @@ export default function Product({ product }) {
                 <div className="flex justify-center">
                     <button
                         onClick={() => handleAddToCart()}
+                        disabled={isAdded}
                         className={`bg-blue-900 text-white text-xl w-[70%] py-1 px-2 rounded-lg border ${
                             isAdded && ' bg-green-700'
                         }`}

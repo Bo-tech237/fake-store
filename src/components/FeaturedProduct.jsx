@@ -31,6 +31,7 @@ export default function FeaturedProduct({ product }) {
                 <div className="">
                     <button
                         onClick={() => handleAddToCart()}
+                        disabled={isAdded}
                         className={`bg-white mt-5 text-black text-xl py-1 px-2 rounded-lg border border-cyan-600 ${
                             isAdded && ' bg-green-700'
                         }`}
